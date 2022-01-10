@@ -3,7 +3,7 @@ package pokemon.dto;
 import lombok.Data;
 
 @Data
-public class PokemonDTO {
+public class PokemonDTO{
 	private String name;
 	private String color;
 	private Double height;

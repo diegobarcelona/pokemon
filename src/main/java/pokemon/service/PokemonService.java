@@ -1,8 +1,8 @@
 package pokemon.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,26 +27,32 @@ public class PokemonService implements PokemonServiceInterface {
 
 	@Override
 	public List<PokemonDTO> getHeaviestPokemons() {
-		List<Pokemon> result = pokemonRepo.findTop5ByOrderByWeightDesc().get();
-		return result.stream()
-				.map(this::convertToDto)
-		        .collect(Collectors.toList());
+		List<PokemonDTO> resultHeaviestPokemons = pokemonRepo.findTop5ByOrderByWeightDesc()
+											.get()
+											.stream()
+											.map(this::convertToDto)
+									        .collect(Collectors.toList());
+		return resultHeaviestPokemons;
 	}
 
 	@Override
 	public List<PokemonDTO> getHighestPokemons() {
-		List<Pokemon> result = pokemonRepo.findTop5ByOrderByHeightDesc().get();
-		return result.stream()
-				.map(this::convertToDto)
-		        .collect(Collectors.toList());
+		List<PokemonDTO> resultHighestPokemons = pokemonRepo.findTop5ByOrderByHeightDesc()
+											.get()
+											.stream()
+											.map(this::convertToDto)
+									        .collect(Collectors.toList());
+		return resultHighestPokemons;
 	}
 
 	@Override
 	public List<PokemonDTO> getMoreBaseExperiencePokemons() {
-		List<Pokemon> result = pokemonRepo.findTop5ByOrderByBaseExperienceDesc().get();
-		return result.stream()
-				.map(this::convertToDto)
-		        .collect(Collectors.toList());
+		List<PokemonDTO> resultMoreBaseExperiencePokemons = pokemonRepo.findTop5ByOrderByBaseExperienceDesc()
+														.get()
+														.stream()
+														.map(this::convertToDto)
+												        .collect(Collectors.toList());
+		return resultMoreBaseExperiencePokemons;
 	}
 	
 	private PokemonDTO convertToDto(Pokemon pokemon) {

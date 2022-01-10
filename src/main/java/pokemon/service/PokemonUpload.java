@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import pokemon.entity.Pokemon;
 import pokemon.repository.PokemonRepository;
+import static pokemon.constant.PokemonConstant.*;
 
 @Component
 public class PokemonUpload {
@@ -31,7 +32,7 @@ public class PokemonUpload {
     }
 	public void saveData() {
 		String name = null, height = null, weight = null, baseExperience = null, color = null;
-		for(int n=1; n<=10220; n++) {
+		for(int n=1; n<=TOTAL_NUMBER_POKEMON; n++) {
 			String url = "https://pokeapi.co/api/v2/pokemon/"+n;
 			try {
 				String json = this.getJSON(url);
@@ -70,7 +71,7 @@ public class PokemonUpload {
 						}
 					}
 				}
-				if(color!=null&&color.equals("red")) {
+				if(color!=null&&color.equals(SELECTED_COLOR)) {
 					Pokemon pokemon = new Pokemon();
 					pokemon.setBaseExperience(Double.valueOf(baseExperience));
 					pokemon.setColor(color);
@@ -79,7 +80,7 @@ public class PokemonUpload {
 					pokemon.setWeight(Double.valueOf(weight));
 					pokemonRepo.save(pokemon);
 				}
-				else if(color!=null&&!color.equals("red"))
+				else if(color!=null&&!color.equals(SELECTED_COLOR))
 					break;
 					
 			} catch(HttpClientErrorException ex) {}

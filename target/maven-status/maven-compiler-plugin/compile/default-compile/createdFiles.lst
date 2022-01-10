@@ -1,9 +1,10 @@
 pokemon/Application.class
-pokemon/configuration/PokemonConfiguration.class
-pokemon/service/PokemonService.class
+pokemon/constant/PokemonConstant.class
 pokemon/dto/PokemonDTO.class
 pokemon/service/PokemonServiceInterface.class
-pokemon/repository/PokemonRepository.class
 pokemon/controller/PokemonController.class
-pokemon/entity/Pokemon.class
 pokemon/service/PokemonUpload.class
+pokemon/configuration/PokemonConfiguration.class
+pokemon/service/PokemonService.class
+pokemon/repository/PokemonRepository.class
+pokemon/entity/Pokemon.class
